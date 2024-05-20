@@ -1,6 +1,8 @@
 local keymap = vim.keymap
 local opts = { silent = true }
 
+vim.g.mapleader = " "
+
 -- basic
 keymap.set("i", "kj", "<Esc>")
 keymap.set("i", "<C-v>", "<C-r>+")
