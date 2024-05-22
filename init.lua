@@ -15,4 +15,10 @@ spec "user.extras.ui.nui"
 spec "user.extras.ui.noice"
 spec "user.extras.ui.dressing"
 
+spec "user.editor.whichkey"
+spec "user.editor.telescope"
+spec "user.editor.spectre"
+spec "user.editor.flash"
+spec "user.editor.neotree"
+
 require "user.lazy"
