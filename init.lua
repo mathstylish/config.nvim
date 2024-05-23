@@ -21,4 +21,9 @@ spec "user.editor.spectre"
 spec "user.editor.flash"
 spec "user.editor.neotree"
 
+spec "user.coding.cmp"
+spec "user.coding.autopairs"
+spec "user.coding.comment"
+spec "user.coding.surround"
+
 require "user.lazy"
