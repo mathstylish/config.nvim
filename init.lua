@@ -26,4 +26,8 @@ spec "user.coding.autopairs"
 spec "user.coding.comment"
 spec "user.coding.surround"
 
+spec "user.lsp.mason"
+spec "user.lsp.lspconfig"
+spec "user.extras.lsp.typescript-tools"
+
 require "user.lazy"
