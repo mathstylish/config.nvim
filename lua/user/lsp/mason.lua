@@ -17,15 +17,15 @@ function M.config()
       icons = {
         package_installed = icons.ui.Check,
         package_pending = icons.ui.BoldArrowRight,
-        package_uninstalled = icons.ui.BoldClose
-      }
-    }
+        package_uninstalled = icons.ui.BoldClose,
+      },
+    },
   }
 
   mason_lspconfig.setup {
     ensure_installed = {
       "lua_ls",
-      "tsserver"
+      "tsserver",
     },
 
     -- auto-install configured servers (with lspconfig)
@@ -33,9 +33,12 @@ function M.config()
   }
 
   mason_tool_installed.setup {
-    ensure_installed  = {
-      "stylua"
-    }
+    ensure_installed = {
+      "stylua",
+      "prettier",
+      "prettierd",
+      "yamlfix",
+    },
   }
 end
 

@@ -28,6 +28,7 @@ spec "user.coding.cmp"
 spec "user.coding.autopairs"
 spec "user.coding.comment"
 spec "user.coding.surround"
+spec "user.coding.conform"
 
 spec "user.lsp.mason"
 spec "user.lsp.lspconfig"
