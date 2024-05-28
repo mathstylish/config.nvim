@@ -5,8 +5,8 @@ local M = {
     {
       "folke/neodev.nvim",
       "hrsh7th/cmp-nvim-lsp",
-    }
-  }
+    },
+  },
 }
 
 local function lsp_keymaps(bufnr)
@@ -90,6 +90,7 @@ function M.config()
 
   local servers = {
     "lua_ls",
+    "eslint",
   }
 
   vim.diagnostic.config {
@@ -135,7 +136,6 @@ function M.config()
 
     lspconfig[server].setup(opts)
   end
-
 end
 
 return M

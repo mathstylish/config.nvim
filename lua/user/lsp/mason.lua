@@ -26,6 +26,7 @@ function M.config()
     ensure_installed = {
       "lua_ls",
       "tsserver",
+      "eslint",
     },
 
     -- auto-install configured servers (with lspconfig)

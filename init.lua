@@ -24,14 +24,15 @@ spec "user.editor.neotree"
 spec "user.extras.editor.folding"
 spec "user.extras.editor.illuminate"
 
+spec "user.lsp.mason"
+spec "user.lsp.lspconfig"
+spec "user.extras.lsp.typescript-tools"
+
 spec "user.coding.cmp"
 spec "user.coding.autopairs"
 spec "user.coding.comment"
 spec "user.coding.surround"
 spec "user.coding.conform"
-
-spec "user.lsp.mason"
-spec "user.lsp.lspconfig"
-spec "user.extras.lsp.typescript-tools"
+spec "user.coding.lint"
 
 require "user.lazy"
