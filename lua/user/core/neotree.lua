@@ -1,18 +1,18 @@
 local M = {
-    "nvim-neo-tree/neo-tree.nvim",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons", -- optional
-        "MunifTanjim/nui.nvim",
-        "3rd/image.nvim", -- optional image support in preview window
-    }
+  "nvim-neo-tree/neo-tree.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- optional
+    "MunifTanjim/nui.nvim",
+    "3rd/image.nvim", -- optional image support in preview window
+  },
 }
 
 function M.config()
   local wk = require "which-key"
 
   wk.register {
-    ["<leader>e"] = { "<cmd>Neotree toggle<cr>", "Explorer" }
+    ["<leader>e"] = { "<cmd>Neotree toggle<cr>", "Explorer" },
   }
 
   local icons = require "user.util.icons"
@@ -107,7 +107,7 @@ function M.config()
       mappings = {
         ["o"] = "open",
         ["h"] = "close_node",
-        ["p"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+        ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
         -- Read `# Preview Mode` for more information
         ["s"] = "open_vsplit",
         ["t"] = "open_tabnew",
@@ -128,9 +128,9 @@ function M.config()
         ["r"] = "rename",
         ["y"] = "copy_to_clipboard",
         ["x"] = "cut_to_clipboard",
-        -- ["p"] = "paste_from_clipboard",
-        ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
-        ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+        ["p"] = "paste_from_clipboard",
+        ["c"] = { "copy", config = { show_path = "relative" } }, -- takes text input for destination, also accepts the optional config.show_path option like "add":
+        ["m"] = { "move", config = { show_path = "relative" } }, -- takes text input for destination, also accepts the optional config.show_path option like "add".
         ["q"] = "close_window",
         ["R"] = "refresh",
         ["?"] = "show_help",
@@ -195,3 +195,4 @@ function M.config()
 end
 
 return M
+
