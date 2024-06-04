@@ -33,5 +33,6 @@ spec "user.extras.folding"
 spec "user.extras.illuminate"
 spec "user.extras.cursorword"
 spec "user.extras.todo-comments"
+spec "user.extras.autosession"
 
 require "user.lazy"
