@@ -31,5 +31,6 @@ spec "user.extras.noice"
 spec "user.extras.dressing"
 spec "user.extras.folding"
 spec "user.extras.illuminate"
+spec "user.extras.cursorword"
 
 require "user.lazy"
