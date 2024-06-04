@@ -91,6 +91,8 @@ function M.config()
   local servers = {
     "lua_ls",
     "eslint",
+    "jsonls",
+    "yamlls",
   }
 
   vim.diagnostic.config {

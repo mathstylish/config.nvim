@@ -20,6 +20,7 @@ spec "user.core.comment"
 spec "user.core.surround"
 spec "user.core.conform"
 spec "user.core.lint"
+spec "user.core.schemastore"
 
 spec "user.lsp.mason"
 spec "user.lsp.lspconfig"
@@ -30,6 +31,5 @@ spec "user.extras.noice"
 spec "user.extras.dressing"
 spec "user.extras.folding"
 spec "user.extras.illuminate"
-
 
 require "user.lazy"

@@ -27,6 +27,8 @@ function M.config()
       "lua_ls",
       "tsserver",
       "eslint",
+      "jsonls",
+      "yamlls",
     },
 
     -- auto-install configured servers (with lspconfig)
