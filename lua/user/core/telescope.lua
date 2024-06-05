@@ -77,6 +77,7 @@ function M.config()
       d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
       M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
       c = { "<cmd>Telescope colorscheme<cr>", "Colorschemes" },
+      b = { "<cmd>Telescope buffers<cr>", "Show buffers" },
     },
   }, { prefix = "<leader>" })
 end
