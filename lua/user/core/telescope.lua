@@ -62,9 +62,18 @@ function M.config()
         enable_preview = true,
       },
     },
+    extensions = {
+      persisted = {
+        layout_config = {
+          width = 0.55,
+          height = 0.55,
+        },
+      },
+    },
   }
 
   require("telescope").load_extension "fzf"
+  require("telescope").load_extension "persisted"
 
   local wk = require "which-key"
 
@@ -78,6 +87,7 @@ function M.config()
       M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
       c = { "<cmd>Telescope colorscheme<cr>", "Colorschemes" },
       b = { "<cmd>Telescope buffers<cr>", "Show buffers" },
+      s = { "<cmd>Telescope persisted<cr>", "Load session" },
     },
   }, { prefix = "<leader>" })
 end

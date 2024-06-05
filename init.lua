@@ -36,5 +36,8 @@ spec "user.extras.todo-comments"
 -- BUG: bug with neotree
 -- spec "user.extras.autosession"
 spec "user.extras.project"
+spec "user.extras.lab"
+spec "user.extras.persisted"
+spec "user.extras.tmux-navigator"
 
 require "user.lazy"
