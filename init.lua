@@ -33,7 +33,8 @@ spec "user.extras.folding"
 spec "user.extras.illuminate"
 spec "user.extras.cursorword"
 spec "user.extras.todo-comments"
-spec "user.extras.autosession"
+-- BUG: bug with neotree
+-- spec "user.extras.autosession"
 spec "user.extras.project"
 
 require "user.lazy"
