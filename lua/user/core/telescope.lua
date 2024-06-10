@@ -8,6 +8,7 @@ local M = {
 }
 
 function M.config()
+  local actions = require "telescope.actions"
   require("telescope").setup {
     defaults = {
       initial_mode = "insert",
@@ -60,6 +61,18 @@ function M.config()
       },
       colorscheme = {
         enable_preview = true,
+      },
+      buffers = {
+        previewer = false,
+        initial_mode = "normal",
+        mappings = {
+          i = {
+            ["<C-d>"] = actions.delete_buffer,
+          },
+          n = {
+            ["dd"] = actions.delete_buffer,
+          },
+        },
       },
     },
     extensions = {
