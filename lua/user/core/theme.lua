@@ -5,6 +5,11 @@ local M = {
 }
 
 function M.config()
+  require("nightfox").setup {
+    options = {
+      transparent = true,
+    },
+  }
   vim.cmd.colorscheme "carbonfox"
 end
 
