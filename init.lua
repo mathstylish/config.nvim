@@ -39,5 +39,6 @@ spec "user.extras.lab"
 spec "user.extras.persisted"
 spec "user.extras.tmux-navigator"
 spec "user.extras.breadcrumbs"
+spec "user.extras.toggleterm"
 
 require "user.lazy"
