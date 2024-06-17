@@ -34,8 +34,6 @@ spec "user.extras.folding"
 spec "user.extras.illuminate"
 spec "user.extras.cursorword"
 spec "user.extras.todo-comments"
--- BUG: bug with neotree
--- spec "user.extras.autosession"
 spec "user.extras.project"
 spec "user.extras.lab"
 spec "user.extras.persisted"
