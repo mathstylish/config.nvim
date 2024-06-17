@@ -24,8 +24,9 @@ spec "user.core.schemastore"
 
 spec "user.lsp.mason"
 spec "user.lsp.lspconfig"
-spec "user.extras.lsp.typescript-tools"
+spec "user.core.navic"
 
+spec "user.extras.lsp.typescript-tools"
 spec "user.extras.nui"
 spec "user.extras.noice"
 spec "user.extras.dressing"
@@ -39,5 +40,6 @@ spec "user.extras.project"
 spec "user.extras.lab"
 spec "user.extras.persisted"
 spec "user.extras.tmux-navigator"
+spec "user.extras.breadcrumbs"
 
 require "user.lazy"
