@@ -12,7 +12,6 @@ function M.config()
       visual = "s",
       delete = "ds",
       change = "cs",
-      normal_cur = "ss",
       normal_line = "S",
       normal_cur_line = "SS",
       visual_line = "gS",

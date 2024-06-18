@@ -19,8 +19,6 @@ keymap.set("n", "k", "gk")
 keymap.set("n", "j", "gj")
 
 -- tabs
-keymap.set("n", "te", ":enew<cr>", opts)
-keymap.set("n", "tw", "<C-w>q")
 keymap.set("n", "H", ":bnext<cr>", opts)
 keymap.set("n", "L", ":bprev<cr>", opts)
 
@@ -49,3 +47,4 @@ keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 -- visual indent
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
+
