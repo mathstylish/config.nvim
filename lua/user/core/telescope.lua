@@ -86,7 +86,7 @@ function M.config()
   }
 
   require("telescope").load_extension "fzf"
-  require("telescope").load_extension "persisted"
+  -- require("telescope").load_extension "persisted"
 
   local wk = require "which-key"
 

@@ -1,27 +1,3 @@
-local function get_os_platform()
-  local is_win = vim.fn.has "win32"
-  local is_mac = vim.fn.has "macunix"
-
-  if is_win then
-    return "win"
-  end
-
-  if is_mac then
-    return "mac"
-  end
-
-  return "linux"
-end
-
-local function get_os_home_var()
-  local is_win = vim.fn.has "win32"
-
-  if is_win then
-    return "USERPROFILE"
-  end
-  return "HOME"
-end
-
 local function get_jdtls()
   -- Get the Mason Registry to gain access to downloaded binaries
   local mason_registry = require "mason-registry"
@@ -32,7 +8,7 @@ local function get_jdtls()
   -- Obtain the path to the jar which runs the language server
   local launcher = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
   -- Declare white operating system we are using, windows use win, macos use mac
-  local SYSTEM = get_os_platform()
+  local SYSTEM = "linux"
   -- Obtain the path to configuration files for your specific operating system
   local config = jdtls_path .. "/config_" .. SYSTEM
   -- Obtain the path to the Lomboc jar
@@ -64,9 +40,9 @@ end
 
 local function get_workspace()
   -- Get the home directory of your operating system
-  local home = get_os_home_var()
+  local home = os.getenv "HOME"
   -- Declare a directory where you would like to store project information
-  local workspace_path = home .. "/Development/Java/workspace"
+  local workspace_path = home .. "/code/workspace/"
   -- Determine the project name
   local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
   -- Create the workspace directory by concatenating the designated workspace path and the project name
@@ -137,6 +113,19 @@ local function java_keymaps()
   vim.keymap.set("n", "<leader>JT", "<Cmd> lua require('jdtls').test_class()<CR>", { desc = "[J]ava [T]est Class" })
   -- Set a Vim motion to <Space> + <Shift>J + u to update the project configuration
   vim.keymap.set("n", "<leader>Ju", "<Cmd> JdtUpdateConfig<CR>", { desc = "[J]ava [U]pdate Config" })
+
+  vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+  vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+  vim.keymap.set("n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+  vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+  vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
+
+  vim.keymap.set("n", "K", function()
+    local winid = require("ufo").peekFoldedLinesUnderCursor()
+    if not winid then
+      vim.lsp.buf.hover()
+    end
+  end)
 end
 
 local function setup_jdtls()
@@ -153,8 +142,7 @@ local function setup_jdtls()
   local bundles = get_bundles()
 
   -- Determine the root directory of the project by looking for these specific markers
-  local root_dir = jdtls.setup.find_root { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
-
+  local root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1])
   -- Tell our JDTLS language features it is capable of
   local capabilities = {
     workspace = {

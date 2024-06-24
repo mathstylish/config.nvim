@@ -1,16 +1,43 @@
-local M = {
-  "EdenEast/nightfox.nvim",
-  lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  priority = 1000, -- make sure to load this before all the other start plugins
+local themes = {
+  nightfox = {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nightfox").setup {
+        options = {
+          transparent = true,
+        },
+      }
+      vim.cmd.colorscheme "carbonfox"
+    end,
+  },
+
+  ayu = {
+    "Shatur/neovim-ayu",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("ayu").setup {
+        overrides = {
+          Normal = { bg = "None" },
+          ColorColumn = { bg = "None" },
+          SignColumn = { bg = "None" },
+          Folded = { bg = "None" },
+          FoldColumn = { bg = "None" },
+          CursorLine = { bg = "None" },
+          CursorColumn = { bg = "None" },
+          WhichKeyFloat = { bg = "None" },
+          VertSplit = { bg = "None" },
+        },
+      }
+    end,
+  },
 }
 
-function M.config()
-  require("nightfox").setup {
-    options = {
-      transparent = true,
-    },
-  }
-  vim.cmd.colorscheme "carbonfox"
-end
+local M = {
+  themes.nightfox,
+  themes.ayu,
+}
 
 return M
