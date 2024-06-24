@@ -1,6 +1,7 @@
 require "user.core.options"
 require "user.core.keymaps"
 require "user.core.autocmds"
+require "user.core.jdtls"
 
 require "user.launch"
 
@@ -39,6 +40,11 @@ spec "user.extras.lab"
 spec "user.extras.persisted"
 spec "user.extras.tmux-navigator"
 spec "user.extras.breadcrumbs"
+
+spec "user.extras.dap"
+spec "user.extras.nvim-jdtls"
+spec "user.extras.springboot"
+
 spec "user.extras.toggleterm"
 
 require "user.lazy"

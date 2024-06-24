@@ -10,10 +10,11 @@ local M = {
 function M.config()
   require("nvim-treesitter.configs").setup {
     ensure_installed = {
-        "bash",
-        "lua",
-        "markdown",
-        "markdown_inline",
+      "bash",
+      "lua",
+      "markdown",
+      "markdown_inline",
+      "java",
     },
     ignore_install = { "" },
     sync_install = false,

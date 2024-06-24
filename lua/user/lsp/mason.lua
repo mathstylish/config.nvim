@@ -29,6 +29,7 @@ function M.config()
       "eslint",
       "jsonls",
       "yamlls",
+      "jdtls",
     },
 
     -- auto-install configured servers (with lspconfig)
@@ -41,6 +42,8 @@ function M.config()
       "prettier",
       "prettierd",
       "yamlfix",
+      "java-debug-adapter",
+      "java-test",
     },
   }
 end
