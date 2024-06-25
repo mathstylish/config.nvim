@@ -13,31 +13,30 @@ local themes = {
     end,
   },
 
-  ayu = {
-    "Shatur/neovim-ayu",
+  darkplus = {
+    "lunarvim/darkplus.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("ayu").setup {
-        overrides = {
-          Normal = { bg = "None" },
-          ColorColumn = { bg = "None" },
-          SignColumn = { bg = "None" },
-          Folded = { bg = "None" },
-          FoldColumn = { bg = "None" },
-          CursorLine = { bg = "None" },
-          CursorColumn = { bg = "None" },
-          WhichKeyFloat = { bg = "None" },
-          VertSplit = { bg = "None" },
-        },
+      vim.cmd.colorscheme "darkplus"
+    end,
+  },
+
+  vscode = {
+    "Mofiqul/vscode.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("vscode").setup {
+        transparent = true,
       }
+      vim.cmd.colorscheme "vscode"
     end,
   },
 }
 
 local M = {
-  themes.nightfox,
-  themes.ayu,
+  themes.vscode,
 }
 
 return M

@@ -44,6 +44,7 @@ spec "user.extras.breadcrumbs"
 spec "user.extras.dap"
 spec "user.extras.nvim-jdtls"
 spec "user.extras.springboot"
+spec "user.extras.neotest"
 
 spec "user.extras.toggleterm"
 
