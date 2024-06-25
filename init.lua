@@ -1,7 +1,6 @@
 require "user.core.options"
 require "user.core.keymaps"
 require "user.core.autocmds"
-require "user.core.jdtls"
 
 require "user.launch"
 

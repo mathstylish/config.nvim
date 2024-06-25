@@ -1,3 +1,7 @@
+local function get_os_config_dir()
+  return vim.fn.has "win32" == 1 and "/config_win" or "/config_linux"
+end
+
 local function get_jdtls()
   -- Get the Mason Registry to gain access to downloaded binaries
   local mason_registry = require "mason-registry"
@@ -8,10 +12,10 @@ local function get_jdtls()
   -- Obtain the path to the jar which runs the language server
   local launcher = vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar")
   -- Declare white operating system we are using, windows use win, macos use mac
-  local SYSTEM = "linux"
+  local SYSTEM = get_os_config_dir()
   -- Obtain the path to configuration files for your specific operating system
-  local config = jdtls_path .. "/config_" .. SYSTEM
-  -- Obtain the path to the Lomboc jar
+  local config = jdtls_path .. SYSTEM
+  -- Obtain the path to the Lombok jar
   local lombok = jdtls_path .. "/lombok.jar"
   return launcher, config, lombok
 end
@@ -50,7 +54,7 @@ local function get_workspace()
   return workspace_dir
 end
 
-local function java_keymaps()
+local function java_keymaps(bufnr)
   -- Allow yourself to run JdtCompile as a Vim command
   vim.cmd "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
   -- Allow yourself/register to run JdtUpdateConfig as a Vim command
@@ -95,22 +99,6 @@ local function java_keymaps()
     "<Esc><Cmd> lua require('jdtls').extract_constant(true)<CR>",
     { desc = "[J]ava Extract [C]onstant" }
   )
-  -- Set a Vim motion to <Space> + <Shift>J + t to run the test method currently under the cursor
-  vim.keymap.set(
-    "n",
-    "<leader>Jt",
-    "<Cmd> lua require('jdtls').test_nearest_method()<CR>",
-    { desc = "[J]ava [T]est Method" }
-  )
-  -- Set a Vim motion to <Space> + <Shift>J + t to run the test method that is currently selected in visual mode
-  vim.keymap.set(
-    "v",
-    "<leader>Jt",
-    "<Esc><Cmd> lua require('jdtls').test_nearest_method(true)<CR>",
-    { desc = "[J]ava [T]est Method" }
-  )
-  -- Set a Vim motion to <Space> + <Shift>J + <Shift>T to run an entire test suite (class)
-  vim.keymap.set("n", "<leader>JT", "<Cmd> lua require('jdtls').test_class()<CR>", { desc = "[J]ava [T]est Class" })
   -- Set a Vim motion to <Space> + <Shift>J + u to update the project configuration
   vim.keymap.set("n", "<leader>Ju", "<Cmd> JdtUpdateConfig<CR>", { desc = "[J]ava [U]pdate Config" })
 
@@ -126,6 +114,10 @@ local function java_keymaps()
       vim.lsp.buf.hover()
     end
   end)
+
+  vim.keymap.set("n", "<leader>lh", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(bufnr)) -- set to true if you want enabled by default
+  end, { desc = "Toggle Inlay Hints" })
 end
 
 local function setup_jdtls()
@@ -276,7 +268,7 @@ local function setup_jdtls()
       },
       -- enable code lens in the lsp
       referencesCodeLens = {
-        enabled = true,
+        enabled = false,
       },
       -- enable inlay hints for parameter names,
       inlayHints = {
@@ -296,7 +288,7 @@ local function setup_jdtls()
   -- Function that will be ran once the language server is attached
   local on_attach = function(_, bufnr)
     -- Map the Java specific key mappings once the server is attached
-    java_keymaps()
+    java_keymaps(bufnr)
 
     -- Setup the java debug adapter of the JDTLS server
     require("jdtls.dap").setup_dap()
@@ -310,15 +302,17 @@ local function setup_jdtls()
     require("jdtls.setup").add_commands()
     -- Refresh the codelens
     -- Code lens enables features such as code reference counts, implemenation counts, and more.
-    vim.lsp.codelens.refresh()
+
+    -- INFO: set referencesCodeLens to true and uncomment this
+    -- vim.lsp.codelens.refresh()
 
     -- Setup a function that automatically runs every time a java file is saved to refresh the code lens
-    vim.api.nvim_create_autocmd("BufWritePost", {
-      pattern = { "*.java" },
-      callback = function()
-        local _, _ = pcall(vim.lsp.codelens.refresh)
-      end,
-    })
+    --   vim.api.nvim_create_autocmd("BufWritePost", {
+    --     pattern = { "*.java" },
+    --     callback = function()
+    --       local _, _ = pcall(vim.lsp.codelens.refresh)
+    --     end,
+    --   })
   end
 
   -- Create the configuration table for the start or attach function

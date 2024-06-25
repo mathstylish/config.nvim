@@ -1,39 +1,11 @@
 local M = {
-  "lukas-reineke/indent-blankline.nvim",
+  "nvimdev/indentmini.nvim",
 }
 
 function M.config()
-  local icons = require "user.util.icons"
-  require("ibl").setup {
-    indent = {
-      char = icons.ui.LineLeft,
-    },
-    scope = {
-      enabled = true,
-      show_start = true,
-      show_end = false,
-      injected_languages = false,
-      show_exact_scope = false,
-      include = {
-        node_type = { ["rust"] = { "let_declaration", "const_declaration" } },
-      },
-    },
-    exclude = {
-      filetypes = {
-        "help",
-        "lazy",
-        "neo-tree",
-        "notify",
-        "text",
-        "startify",
-        "dashboard",
-        "neogitstatus",
-        "NvimTree",
-        "Trouble",
-      },
-      buftypes = { "terminal", "nofile" },
-    },
-  }
+  require("indentmini").setup {}
+  vim.cmd.highlight "IndentLine guifg=#404040"
+  vim.cmd.highlight "IndentLineCurrent guifg=#d0d0d0"
 end
 
 return M
