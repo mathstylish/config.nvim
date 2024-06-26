@@ -2,6 +2,10 @@ local function get_os_config_dir()
   return vim.fn.has "win32" == 1 and "/config_win" or "/config_linux"
 end
 
+local function get_os_home_var()
+  return vim.fn.has "win32" == 1 and os.getenv "USERPROFILE" or os.getenv "HOME"
+end
+
 local function get_jdtls()
   -- Get the Mason Registry to gain access to downloaded binaries
   local mason_registry = require "mason-registry"
@@ -44,7 +48,7 @@ end
 
 local function get_workspace()
   -- Get the home directory of your operating system
-  local home = os.getenv "HOME"
+  local home = get_os_home_var()
   -- Declare a directory where you would like to store project information
   local workspace_path = home .. "/code/workspace/"
   -- Determine the project name
