@@ -12,6 +12,7 @@ function M.config()
   require("telescope").setup {
     defaults = {
       initial_mode = "insert",
+      file_ignore_patterns = { "node_modules" },
       mappings = {
         n = {
           ["q"] = "close",
@@ -74,6 +75,12 @@ function M.config()
           },
         },
       },
+      diagnostics = {
+        initial_mode = "normal",
+      },
+      lsp_references = {
+        initial_mode = "normal",
+      },
     },
     extensions = {
       persisted = {
@@ -96,11 +103,9 @@ function M.config()
       f = { "<cmd>Telescope find_files<cr>", "Files" },
       t = { "<cmd>Telescope live_grep<cr>", "Text" },
       h = { "<cmd>Telescope help_tags<cr>", "Help" },
-      d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
       M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
       c = { "<cmd>Telescope colorscheme<cr>", "Colorschemes" },
       b = { "<cmd>Telescope buffers<cr>", "Show buffers" },
-      s = { "<cmd>Telescope persisted<cr>", "Load session" },
     },
   }, { prefix = "<leader>" })
 end
