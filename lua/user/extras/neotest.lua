@@ -7,6 +7,7 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
     -- adapters
     "rcasia/neotest-java",
+    "nvim-neotest/neotest-jest",
   },
 }
 
@@ -26,6 +27,7 @@ function M.config()
   require("neotest").setup {
     adapters = {
       require "neotest-java",
+      require "neotest-jest",
     },
   }
 end
