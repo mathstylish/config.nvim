@@ -21,6 +21,7 @@ spec "user.core.surround"
 spec "user.core.conform"
 spec "user.core.lint"
 spec "user.core.schemastore"
+spec "user.core.scrolleof"
 
 spec "user.lsp.mason"
 spec "user.lsp.lspconfig"
