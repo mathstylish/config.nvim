@@ -45,13 +45,16 @@ local themes = {
   },
 
   gruvbox = {
-    "sainnhe/gruvbox-material",
+    "f4z3r/gruvbox-material.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd [[let g:gruvbox_material_background = 'hard']]
-      vim.cmd [[let g:gruvbox_material_better_performance = 1]]
-      vim.cmd.colorscheme "gruvbox-material"
+      require("gruvbox-material").setup {
+        contrast = "hard",
+        background = {
+          transparent = false,
+        },
+      }
     end,
   },
 }
