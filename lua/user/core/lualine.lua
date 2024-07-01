@@ -9,10 +9,10 @@ function M.config()
     "diff",
     colored = false,
     symbols = {
-        added = icons.git.LineAdded,
-        modified = icons.git.LineModified,
-        removed = icons.git.LineRemoved
-    }, 
+      added = icons.git.LineAdded,
+      modified = icons.git.LineModified,
+      removed = icons.git.LineRemoved,
+    },
   }
 
   local diagnostics = {
@@ -46,6 +46,7 @@ function M.config()
 
   require("lualine").setup {
     options = {
+      theme = "gruvbox-material",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
 
