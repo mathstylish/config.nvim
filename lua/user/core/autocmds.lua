@@ -1,6 +1,17 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Disable commenting new lines
+autocmd("BufEnter", {
+  group = augroup("DisableCommentOnNewLine", {}),
+  pattern = "*",
+  callback = function()
+    vim.cmd [[set formatoptions-=cro]]
+    vim.cmd [[setlocal formatoptions-=cro]]
+  end,
+})
+
+-- Highlight yanked text
 autocmd("TextYankPost", {
   group = augroup("HighlightYank", {}),
   pattern = "*",
@@ -12,6 +23,16 @@ autocmd("TextYankPost", {
   end,
 })
 
+-- Disable eslint on node_modules
+autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "**/node_modules/**", "node_modules", "/node_modules/*" },
+  group = augroup("DisableEslintOnNodeModules", {}),
+  callback = function()
+    vim.diagnostic.enable(false)
+  end,
+})
+
+-- Use q to exit this filetypes
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = {
     "netrw",
@@ -26,6 +47,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "lir",
     "DressingSelect",
     "tsplayground",
+    "neotest-output",
+    "neotest-output-panel",
+    "neotest-summary",
     "",
   },
   callback = function()
