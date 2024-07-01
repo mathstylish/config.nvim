@@ -48,6 +48,6 @@ spec "user.extras.neotest"
 
 spec "user.extras.toggleterm"
 spec "user.extras.hardtime"
-spec "user.extras.precognition"
+-- spec "user.extras.precognition"
 
 require "user.lazy"
