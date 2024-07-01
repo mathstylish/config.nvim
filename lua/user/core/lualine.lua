@@ -46,14 +46,14 @@ function M.config()
 
   require("lualine").setup {
     options = {
-      theme = "gruvbox-material",
-      component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
+      theme = "auto",
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
 
       ignore_focus = { "NvimTree" },
     },
     sections = {
-      lualine_a = {},
+      lualine_a = { "mode" },
       lualine_b = { "branch" },
       lualine_c = { diagnostics },
       lualine_y = { "progress" },
