@@ -16,11 +16,14 @@ function M.config()
   wk.register({
     t = {
       name = "Test",
-      t = { "<cmd>lua require'neotest'.run.run()<cr>", "Nearest" },
       f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "File" },
-      d = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug" },
-      s = { "<cmd>lua require('neotest').run.stop()<cr>", "Test" },
-      a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+      a = { "<cmd>lua require('neotest').run.run(vim.uv.cwd())<cr>", "All Files" },
+      n = { "<cmd>lua require('neotest').run.run()<cr>", "Nearest" },
+      l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Last" },
+      s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Toggle Summary" },
+      o = { "<cmd>lua require('neotest').output.open({ enter = true, auto_close = true })<cr>", "Show Output" },
+      O = { "<cmd>lua require('neotest').output_panel.toggle()<cr>", "Toggle Output Panel" },
+      S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
     },
   }, { prefix = "<leader>" })
 
