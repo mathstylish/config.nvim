@@ -40,12 +40,18 @@ M.on_attach = function(client, bufnr)
 end
 
 function M.common_capabilities()
-  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  if status_ok then
-    return cmp_nvim_lsp.default_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+  local status_ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  if status_ok_cmp then
+    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
   end
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  local status_ok_file_ops, file_operations = pcall(require, "lsp-file-operations")
+  if status_ok_file_ops then
+    capabilities = vim.tbl_deep_extend("force", capabilities, file_operations.default_capabilities())
+  end
+
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = {
@@ -110,6 +116,11 @@ function M.config()
       prefix = "",
     },
   }
+
+  -- extend default config with file operations capabilities (look at M.common_capabilities too)
+  lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+    capabilities = M.common_capabilities(),
+  })
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })

@@ -22,6 +22,7 @@ spec "user.core.conform"
 spec "user.core.lint"
 spec "user.core.schemastore"
 spec "user.core.scrolleof"
+spec "user.core.file-operations"
 
 spec "user.lsp.mason"
 spec "user.lsp.lspconfig"
