@@ -26,7 +26,9 @@ function M.config()
       -- disable_member_code_lens = true,
 
       -- described below
-      -- tsserver_format_options = {},
+      tsserver_format_options = {
+        allowRenameOfImportPath = true,
+      },
 
       tsserver_file_preferences = {
         includeInlayParameterNameHints = "all", -- "none" | "literals" | "all";
