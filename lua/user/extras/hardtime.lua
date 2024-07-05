@@ -6,6 +6,7 @@ local M = {
 function M.config()
   vim.notify = require "notify"
   require("hardtime").setup {
+    disabled_filetypes = { "Harpoon" },
     disable_mouse = false,
     hints = {
       ["cc"] = {

@@ -51,4 +51,6 @@ spec "user.extras.toggleterm"
 spec "user.extras.hardtime"
 -- spec "user.extras.precognition"
 
+spec "user.extras.harpoon"
+
 require "user.lazy"

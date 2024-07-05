@@ -11,9 +11,6 @@ keymap.set("n", "<leader>q", ":quit<cr>", opts)
 keymap.set("n", "<leader>Q", ":qa!<cr>", opts)
 keymap.set("n", "<leader>w", ":write<cr>", opts)
 
--- map ; to ç (abnt keyboard)
-keymap.set("i", "ç", ":")
-
 -- better db
 keymap.set("n", "db", 'vb"_d')
 
