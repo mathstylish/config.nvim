@@ -37,15 +37,18 @@ function M.config()
           prompt_position = "bottom",
           preview_cutoff = 120,
         },
+        initial_mode = "normal",
         attach_mappings = function(prompt_bufnr, map)
-          map("i", "<C-d>", function()
+          local delete_buffer = function()
             local state = require "telescope.actions.state"
             local selected_entry = state.get_selected_entry()
             local current_picker = state.get_current_picker(prompt_bufnr)
 
             table.remove(harpoon_files.items, selected_entry.index)
             current_picker:refresh(finder())
-          end)
+          end
+          map("i", "<C-d>", delete_buffer)
+          map("n", "dd", delete_buffer)
           return true
         end,
       })
