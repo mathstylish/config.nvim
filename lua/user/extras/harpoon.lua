@@ -57,6 +57,10 @@ function M.config()
   -- TELESCOPE as UI
 
   -- harpoon mappings
+  vim.keymap.set("n", "<TAB>", function()
+    toggle_telescope(harpoon:list())
+  end)
+
   local wk = require "which-key"
   wk.register({
     h = {
@@ -67,19 +71,13 @@ function M.config()
         end,
         "Add to list",
       },
-      e = {
-        function()
-          toggle_telescope(harpoon:list())
-        end,
-        "Show list",
-      },
-      p = {
+      h = {
         function()
           harpoon:list():prev()
         end,
         "Prev buffer",
       },
-      n = {
+      l = {
         function()
           harpoon:list():next()
         end,
@@ -102,12 +100,6 @@ function M.config()
           harpoon:list():select(3)
         end,
         "Third buffer",
-      },
-      l = {
-        function()
-          harpoon:list():select(4)
-        end,
-        "Last buffer",
       },
     },
   }, { prefix = "<leader>" })
