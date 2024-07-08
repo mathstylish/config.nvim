@@ -52,5 +52,6 @@ spec "user.extras.hardtime"
 -- spec "user.extras.precognition"
 
 spec "user.extras.harpoon"
+-- spec "user.extras.copilot"
 
 require "user.lazy"
