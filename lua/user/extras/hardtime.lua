@@ -7,6 +7,10 @@ function M.config()
   vim.notify = require "notify"
   require("hardtime").setup {
     disable_mouse = false,
+    -- disabled_keys = {
+    --   ["<Left>"] = { "n" },
+    --   ["<Right>"] = { "n" },
+    -- },
     hints = {
       ["cc"] = {
         message = function()
