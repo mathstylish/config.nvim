@@ -47,7 +47,7 @@ spec "user.extras.nvim-jdtls"
 spec "user.extras.springboot"
 spec "user.extras.neotest"
 
-spec "user.extras.toggleterm"
+-- spec "user.extras.toggleterm"
 spec "user.extras.hardtime"
 -- spec "user.extras.precognition"
 
