@@ -11,13 +11,6 @@ function M.config()
     --   ["<Left>"] = { "n" },
     --   ["<Right>"] = { "n" },
     -- },
-    hints = {
-      ["cc"] = {
-        message = function()
-          return "Use S instead of cc"
-        end,
-      },
-    },
   }
 end
 
