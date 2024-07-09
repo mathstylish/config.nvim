@@ -37,6 +37,20 @@ M.on_attach = function(client, bufnr)
   if client.supports_method "textDocument/inlayHint" then
     vim.lsp.inlay_hint.enable(false) -- set to true if you want enabled by default
   end
+
+  -- highlight occurrences
+  if client.supports_method "textDocument/documentHighlight" then
+    vim.api.nvim_exec2(
+      [[
+            augroup lsp_document_highlight
+                autocmd! * <buffer>
+                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+            ]],
+      { output = false }
+    )
+  end
 end
 
 function M.common_capabilities()
