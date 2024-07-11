@@ -107,6 +107,7 @@ function M.config()
     "eslint",
     "jsonls",
     "yamlls",
+    "prismals",
   }
 
   vim.diagnostic.config {

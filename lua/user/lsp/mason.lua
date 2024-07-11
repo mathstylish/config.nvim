@@ -30,6 +30,7 @@ function M.config()
       "jsonls",
       "yamlls",
       "jdtls",
+      "prismals",
     },
 
     -- auto-install configured servers (with lspconfig)
