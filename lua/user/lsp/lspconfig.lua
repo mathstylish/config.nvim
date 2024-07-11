@@ -56,28 +56,62 @@ end
 function M.common_capabilities()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-  local status_ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  if status_ok_cmp then
-    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-  end
+  capabilities.textDocument.completion = {
+    dynamicRegistration = false,
+    completionItem = {
+      snippetSupport = true,
+      commitCharactersSupport = true,
+      deprecatedSupport = true,
+      preselectSupport = true,
+      tagSupport = {
+        valueSet = {
+          1,
+        },
+      },
+      insertReplaceSupport = true,
+      resolveSupport = {
+        properties = {
+          "documentation",
+          "detail",
+          "additionalTextEdits",
+          "sortText",
+          "filterText",
+          "insertText",
+          "textEdit",
+          "insertTextFormat",
+          "insertTextMode",
+        },
+      },
+      insertTextModeSupport = {
+        valueSet = {
+          1,
+          2,
+        },
+      },
+      labelDetailsSupport = true,
+    },
+    contextSupport = true,
+    insertTextMode = 1,
+    completionList = {
+      itemDefaults = {
+        "commitCharacters",
+        "editRange",
+        "insertTextFormat",
+        "insertTextMode",
+        "data",
+      },
+    },
+  }
+
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+  }
 
   local status_ok_file_ops, file_operations = pcall(require, "lsp-file-operations")
   if status_ok_file_ops then
     capabilities = vim.tbl_deep_extend("force", capabilities, file_operations.default_capabilities())
   end
-
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  }
-  capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-  }
 
   return capabilities
 end
