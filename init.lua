@@ -39,7 +39,7 @@ spec "user.extras.todo-comments"
 spec "user.extras.project"
 -- spec "user.extras.lab"
 -- spec "user.extras.persisted"
--- spec "user.extras.tmux-navigator"
+spec "user.extras.tmux-navigator"
 spec "user.extras.breadcrumbs"
 
 spec "user.extras.dap"
