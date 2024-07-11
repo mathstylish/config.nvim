@@ -16,10 +16,17 @@ function M.config()
   -- Setup the dap ui with default configuration
   dapui.setup()
 
-  -- setup an event listener for when the debugger is launched
-  dap.listeners.before.launch.dapui_config = function()
-    -- when the debugger is launched open up the debug ui
+  dap.listeners.before.attach.dapui_config = function()
     dapui.open()
+  end
+  dap.listeners.before.launch.dapui_config = function()
+    dapui.open()
+  end
+  dap.listeners.before.event_terminated.dapui_config = function()
+    dapui.close()
+  end
+  dap.listeners.before.event_exited.dapui_config = function()
+    dapui.close()
   end
 
   -- set a vim motion for <Space> + d + t to toggle a breakpoint at the line where the cursor is currently on
@@ -30,6 +37,8 @@ function M.config()
 
   -- set a vim motion to close the debugging ui
   vim.keymap.set("n", "<leader>dc", dapui.close, { desc = "[D]ebug [C]lose" })
+
+  vim.keymap.set({ "n", "v" }, "<leader>de", "<cmd>lua require('dapui').eval()<cr>", { desc = "[D]ebug [E]valuate" })
 end
 
 return M

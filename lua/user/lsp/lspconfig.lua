@@ -108,6 +108,8 @@ function M.config()
     "jsonls",
     "yamlls",
     "prismals",
+    "docker_compose_language_service",
+    "dockerls",
   }
 
   vim.diagnostic.config {

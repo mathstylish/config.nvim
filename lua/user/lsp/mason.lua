@@ -31,6 +31,8 @@ function M.config()
       "yamlls",
       "jdtls",
       "prismals",
+      "docker_compose_language_service",
+      "dockerls",
     },
 
     -- auto-install configured servers (with lspconfig)
