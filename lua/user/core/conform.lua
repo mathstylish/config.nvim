@@ -23,6 +23,7 @@ function M.config()
       javascript = { { "prettierd", "prettier" } },
       typescript = { { "prettierd", "prettier" } },
       yaml = { "yamlfix" },
+      go = { "goimports_reviser", "gofumpt" },
     },
     format_after_save = { async = true, lsp_fallback = true },
   }

@@ -23,6 +23,7 @@ spec "user.core.lint"
 spec "user.core.schemastore"
 spec "user.core.scrolleof"
 spec "user.core.file-operations"
+spec "user.core.devicons"
 
 spec "user.lsp.mason"
 spec "user.lsp.lspconfig"
@@ -53,5 +54,6 @@ spec "user.extras.hardtime"
 
 spec "user.extras.harpoon"
 -- spec "user.extras.copilot"
+spec "user.extras.gopher"
 
 require "user.lazy"

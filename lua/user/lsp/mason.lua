@@ -33,6 +33,7 @@ function M.config()
       "prismals",
       "docker_compose_language_service",
       "dockerls",
+      "gopls",
     },
 
     -- auto-install configured servers (with lspconfig)
@@ -47,6 +48,10 @@ function M.config()
       "yamlfix",
       "java-debug-adapter",
       "java-test",
+      "gofumpt", -- stricter format than gofmt
+      "goimports-reviser", -- alternative to goimports
+      "golines", -- formatter that fixes long lines
+      "gomodifytags",
     },
   }
 end

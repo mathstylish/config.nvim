@@ -144,6 +144,7 @@ function M.config()
     "prismals",
     "docker_compose_language_service",
     "dockerls",
+    "gopls",
   }
 
   vim.diagnostic.config {
