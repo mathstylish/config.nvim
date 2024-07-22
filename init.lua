@@ -55,5 +55,6 @@ spec "user.extras.hardtime"
 spec "user.extras.harpoon"
 -- spec "user.extras.copilot"
 spec "user.extras.gopher"
+spec "user.extras.highlight-colors"
 
 require "user.lazy"
