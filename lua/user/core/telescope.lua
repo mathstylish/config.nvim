@@ -97,17 +97,15 @@ function M.config()
 
   local wk = require "which-key"
 
-  wk.register({
-    f = {
-      name = "Find",
-      f = { "<cmd>Telescope find_files<cr>", "Files" },
-      t = { "<cmd>Telescope live_grep<cr>", "Text" },
-      h = { "<cmd>Telescope help_tags<cr>", "Help" },
-      M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-      c = { "<cmd>Telescope colorscheme<cr>", "Colorschemes" },
-      b = { "<cmd>Telescope buffers<cr>", "Show buffers" },
-    },
-  }, { prefix = "<leader>" })
+  wk.add {
+    { "<leader>f", group = "Find" },
+    { "<leader>fM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Show buffers" },
+    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorschemes" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+    { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Text" },
+  }
 end
 
 return M

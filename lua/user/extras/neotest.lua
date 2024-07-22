@@ -13,19 +13,22 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.register({
-    t = {
-      name = "Test",
-      f = { "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "File" },
-      a = { "<cmd>lua require('neotest').run.run(vim.uv.cwd())<cr>", "All Files" },
-      n = { "<cmd>lua require('neotest').run.run()<cr>", "Nearest" },
-      l = { "<cmd>lua require('neotest').run.run_last()<cr>", "Last" },
-      s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Toggle Summary" },
-      o = { "<cmd>lua require('neotest').output.open({ enter = true, auto_close = true })<cr>", "Show Output" },
-      O = { "<cmd>lua require('neotest').output_panel.toggle()<cr>", "Toggle Output Panel" },
-      S = { "<cmd>lua require('neotest').run.stop()<cr>", "Stop" },
+
+  wk.add {
+    { "<leader>t", group = "Test" },
+    { "<leader>tO", "<cmd>lua require('neotest').output_panel.toggle()<cr>", desc = "Toggle Output Panel" },
+    { "<leader>tS", "<cmd>lua require('neotest').run.stop()<cr>", desc = "Stop" },
+    { "<leader>ta", "<cmd>lua require('neotest').run.run(vim.uv.cwd())<cr>", desc = "All Files" },
+    { "<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", desc = "File" },
+    { "<leader>tl", "<cmd>lua require('neotest').run.run_last()<cr>", desc = "Last" },
+    { "<leader>tn", "<cmd>lua require('neotest').run.run()<cr>", desc = "Nearest" },
+    {
+      "<leader>to",
+      "<cmd>lua require('neotest').output.open({ enter = true, auto_close = true })<cr>",
+      desc = "Show Output",
     },
-  }, { prefix = "<leader>" })
+    { "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", desc = "Toggle Summary" },
+  }
 
   require("neotest").setup {
     adapters = {

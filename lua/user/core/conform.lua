@@ -8,12 +8,13 @@ function M.config()
   local conform = require "conform"
   local wk = require "which-key"
 
-  wk.register {
-    ["<leader>lf"] = {
+  wk.add {
+    {
+      "<leader>lf",
       function()
         conform.format { async = true, lsp_fallback = true }
       end,
-      "Conform Format",
+      desc = "Conform Format",
     },
   }
 

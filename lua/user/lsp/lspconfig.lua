@@ -119,19 +119,17 @@ end
 function M.config()
   local wk = require "which-key"
 
-  wk.register({
-    l = {
-      name = "LSP",
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      i = { "<cmd>LspInfo<cr>", "Info" },
-      j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-      k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
-      l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-      d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-      r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-      s = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
-    },
-  }, { prefix = "<leader>" })
+  wk.add {
+    { "<leader>l", group = "LSP" },
+    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+    { "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
+    { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
+    { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
+    { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
+    { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
+    { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+    { "<leader>ls", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
+  }
 
   local lspconfig = require "lspconfig"
   local icons = require "user.util.icons"

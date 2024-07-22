@@ -1,13 +1,11 @@
 local wk = require "which-key"
 
-wk.register({
-  G = {
-    name = "Gopher",
-    j = { "<cmd>GoTagAdd json<cr>", "TagAdd json" },
-    y = { "<cmd>GoTagAdd yaml<cr>", "TagAdd yaml" },
-    m = { "<cmd>GoMod tidy<cr>", "Tidy" },
-    g = { "<cmd>GoGet <cr>", "Get <package-name>" },
-    t = { "<cmd>GoTestsAll<cr>", "Generate all tests" },
-    e = { "<cmd>GoIfErr<cr>", "Generate if err clause" },
-  },
-}, { prefix = "<leader>" })
+wk.add {
+  { "<leader>G", group = "Gopher" },
+  { "<leader>j", "<cmd>GoTagAdd json<cr>", desc = "TagAdd json" },
+  { "<leader>y", "<cmd>GoTagAdd yaml<cr>", desc = "TagAdd yaml" },
+  { "<leader>m", "<cmd>GoMod tidy<cr>", desc = "Tidy" },
+  { "<leader>g", "<cmd>GoGet <cr>", desc = "Get <package-name>" },
+  { "<leader>t", "<cmd>GoTestsAll<cr>", desc = "Generate all tests" },
+  { "<leader>e", "<cmd>GoIfErr<cr>", desc = "Generate if err clause" },
+}
