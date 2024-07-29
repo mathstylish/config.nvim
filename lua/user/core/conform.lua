@@ -6,17 +6,11 @@ local M = {
 
 function M.config()
   local conform = require "conform"
-  local wk = require "which-key"
+  local keymap = require "user.util.keymap"
 
-  wk.add {
-    {
-      "<leader>lf",
-      function()
-        conform.format { async = true, lsp_fallback = true }
-      end,
-      desc = "Conform Format",
-    },
-  }
+  keymap.add("n", "<leader>lf", function()
+    conform.format { async = true, lsp_fallback = true }
+  end, "Conform [L]sp [F]ormat")
 
   conform.setup {
     formatters_by_ft = {

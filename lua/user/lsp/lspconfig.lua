@@ -117,19 +117,16 @@ function M.common_capabilities()
 end
 
 function M.config()
-  local wk = require "which-key"
+  local keymap = require "user.util.keymap"
 
-  wk.add {
-    { "<leader>l", group = "LSP" },
-    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-    { "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
-    { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
-    { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
-    { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
-    { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
-    { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
-    { "<leader>ls", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
-  }
+  keymap.add("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", "[L]sp Code [a]ction")
+  keymap.add("n", "<leader>ld", "<cmd>Telescope diagnostics<cr>", "[L]sp [d]iagnostics")
+  keymap.add("n", "<leader>li", "<cmd>LspInfo<cr>", "[L]sp [i]nfo")
+  keymap.add("n", "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<cr>", "[L]sp [n]ext Diagnostic")
+  keymap.add("n", "<leader>lp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", "[L]sp [p]rev Diagnostic")
+  keymap.add("n", "<leader>lc", "<cmd>lua vim.lsp.codelens.run()<cr>", "[L]sp [c]odeLens Action")
+  keymap.add("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", "[L]sp [r]ename")
+  keymap.add("n", "<leader>ls", "<cmd>Telescope lsp_workspace_symbols<cr>", "[L]sp Workspace [s]ymbols")
 
   local lspconfig = require "lspconfig"
   local icons = require "user.util.icons"

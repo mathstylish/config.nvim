@@ -17,17 +17,6 @@ function M.config()
       visual_line = "gS",
     },
   }
-  vim.cmd [[ nmap <leader>' _saw' ]]
-  vim.cmd [[ nmap <leader>" _saw" ]]
-  vim.cmd [[ nmap <leader>{ _saw{ ]]
-  vim.cmd [[ nmap <leader>[ _saw[ ]]
-  vim.cmd [[ nmap <leader>( _saw( ]]
-
-  vim.cmd [[ vmap <leader>' s' ]]
-  vim.cmd [[ vmap <leader>" s" ]]
-  vim.cmd [[ vmap <leader>{ s{ ]]
-  vim.cmd [[ vmap <leader>[ s[ ]]
-  vim.cmd [[ vmap <leader>( s( ]]
 end
 
 return M

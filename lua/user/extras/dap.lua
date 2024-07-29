@@ -29,16 +29,18 @@ function M.config()
     dapui.close()
   end
 
+  local keymap = require "user.util.keymap"
+
   -- set a vim motion for <Space> + d + t to toggle a breakpoint at the line where the cursor is currently on
-  vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, { desc = "[D]ebug [T]oggle Breakpoint" })
+  keymap.add("n", "<leader>dt", dap.toggle_breakpoint, "[D]ebug [T]oggle Breakpoint")
 
   -- set a vim motion for <Space> + d + s to start the debugger and launch the debugging ui
-  vim.keymap.set("n", "<leader>ds", dap.continue, { desc = "[D]ebug [S]tart" })
+  keymap.add("n", "<leader>ds", dap.continue, "[D]ebug [S]tart")
 
   -- set a vim motion to close the debugging ui
-  vim.keymap.set("n", "<leader>dc", dapui.close, { desc = "[D]ebug [C]lose" })
+  keymap.add("n", "<leader>dc", dapui.close, "[D]ebug [C]lose")
 
-  vim.keymap.set({ "n", "v" }, "<leader>de", "<cmd>lua require('dapui').eval()<cr>", { desc = "[D]ebug [E]valuate" })
+  keymap.add({ "n", "v" }, "<leader>de", "<cmd>lua require('dapui').eval()<cr>", "[D]ebug [E]valuate")
 end
 
 return M

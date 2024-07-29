@@ -5,11 +5,15 @@ vim.g.mapleader = " "
 
 -- basic
 keymap.set("i", "kj", "<Esc>")
-keymap.set("i", "<C-v>", "<C-r>+")
 keymap.set("n", "<Esc>", ":nohl<cr>", opts)
-keymap.set("n", "<leader>q", ":quit<cr>", opts)
-keymap.set("n", "<leader>Q", ":qa!<cr>", opts)
-keymap.set("n", "<leader>w", ":write<cr>", opts)
+vim.keymap.set("n", "<leader>q", ":quit<CR>", vim.tbl_extend("force", opts, { desc = "[q]uit current window" }))
+vim.keymap.set(
+  "n",
+  "<leader>Q",
+  ":qa!<CR>",
+  vim.tbl_extend("force", opts, { desc = "[Q]uit all windows without saving" })
+)
+vim.keymap.set("n", "<leader>w", ":write<CR>", vim.tbl_extend("force", opts, { desc = "[W]rite into current file" }))
 
 -- better db
 keymap.set("n", "db", 'vb"_d')

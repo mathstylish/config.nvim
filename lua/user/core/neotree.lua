@@ -9,11 +9,9 @@ local M = {
 }
 
 function M.config()
-  local wk = require "which-key"
+  local keymap = require "user.util.keymap"
 
-  wk.add {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer" },
-  }
+  keymap.add("n", "<leader>e", "<cmd>Neotree toggle<cr>", "Open [E]xplorer")
 
   local icons = require "user.util.icons"
 

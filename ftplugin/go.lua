@@ -1,11 +1,8 @@
-local wk = require "which-key"
+local keymap = require "user.util.keymap"
 
-wk.add {
-  { "<leader>G", group = "Gopher" },
-  { "<leader>j", "<cmd>GoTagAdd json<cr>", desc = "TagAdd json" },
-  { "<leader>y", "<cmd>GoTagAdd yaml<cr>", desc = "TagAdd yaml" },
-  { "<leader>m", "<cmd>GoMod tidy<cr>", desc = "Tidy" },
-  { "<leader>g", "<cmd>GoGet <cr>", desc = "Get <package-name>" },
-  { "<leader>t", "<cmd>GoTestsAll<cr>", desc = "Generate all tests" },
-  { "<leader>e", "<cmd>GoIfErr<cr>", desc = "Generate if err clause" },
-}
+keymap.add("n", "<leader>Gj", "<cmd>GoTagAdd json<cr>", "[G]opher TagAdd [j]son")
+keymap.add("n", "<leader>Gy", "<cmd>GoTagAdd yaml<cr>", "[G]opher TagAdd [y]aml")
+keymap.add("n", "<leader>Gm", "<cmd>GoMod tidy<cr>", "[G]opher [m]od tidy")
+keymap.add("n", "<leader>Gg", "<cmd>GoGet <cr>", "[G]opher [g]et <package-name>")
+keymap.add("n", "<leader>Gt", "<cmd>GoTestsAll<cr>", "[G]opher Generate all [t]ests")
+keymap.add("n", "<leader>Ge", "<cmd>GoIfErr<cr>", "[G]opher Generate if [e]rr clause")

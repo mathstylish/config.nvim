@@ -95,17 +95,14 @@ function M.config()
   require("telescope").load_extension "fzf"
   -- require("telescope").load_extension "persisted"
 
-  local wk = require "which-key"
+  local keymap = require "user.util.keymap"
 
-  wk.add {
-    { "<leader>f", group = "Find" },
-    { "<leader>fM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
-    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Show buffers" },
-    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorschemes" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Files" },
-    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Text" },
-  }
+  keymap.add("n", "<leader>fM", "<cmd>Telescope man_pages<cr>", "[Find] [M]an Pages")
+  keymap.add("n", "<leader>fb", "<cmd>Telescope buffers<cr>", "[Find] [B]uffers")
+  keymap.add("n", "<leader>fc", "<cmd>Telescope colorscheme<cr>", "[Find] [C]olorschemes")
+  keymap.add("n", "<leader>ff", "<cmd>Telescope find_files<cr>", "[Find] [F]iles")
+  keymap.add("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", "[Find] [T]ags")
+  keymap.add("n", "<leader>ft", "<cmd>Telescope live_grep<cr>", "[Find] [T]ext")
 end
 
 return M
