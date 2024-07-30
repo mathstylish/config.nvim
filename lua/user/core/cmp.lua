@@ -130,6 +130,7 @@ function M.config()
         return item
       end,
     },
+    preselect = cmp.PreselectMode.None,
   }
 end
 
