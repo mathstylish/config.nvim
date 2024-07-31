@@ -56,5 +56,6 @@ spec "user.extras.harpoon"
 -- spec "user.extras.copilot"
 spec "user.extras.gopher"
 spec "user.extras.highlight-colors"
+spec "user.extras.scrolling"
 
 require "user.lazy"
